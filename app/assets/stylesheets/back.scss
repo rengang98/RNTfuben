@@ -1,0 +1,10 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+.body {
+  border: 2px;
+  border-color: dimgrey;
+  border-style: inset;
+  padding: 10px;
+}

@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-lg-3">
+    <%= render 'home/pub/categories' %>
+  </div>
+  <div class="col-lg-9">
+    <ol class="breadcrumb">
+      <li><a href="<%= root_path %>">Home</a></li>
+      <li class="active"><%= @tplay.category.parent.name %></li>
+      <li><a href="<%= category_path @tplay.category %>"><%= @tplay.category.name %></a></li>
+      <li class="active"><%= @tplay.name %></li>
+    </ol>
+    <h1><%= @tplay.name %></h1>
+    <div class="row">
+      <% @tplay.tplay_images.each do |t| %>
+          <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail detail">
+              <%= image_tag t.image.url(:sub) %>
+            </a>
+          </div>
+      <% end -%>
+    </div>
+
+    <ul class="list-unstyled">
+      <li>商品编号: <%= @tplay.tplay_id %></li>
+      <li>库存: <%= @tplay.ticket %></li>
+    </ul>
+    <h3><strong>¥<%= @tplay.price %></strong> <span class="bprice">¥<%= @tplay.bprice %></span></h3>
+    <p><%= link_to "Add it", "#", class: "btn btn-danger" %></p>
+
+    <br />
+    <br />
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="javascript:;">Description</a></li>
+    </ul>
+    <br />
+    <div>
+      <%= @tplay.description.html_safe %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div>
+  <div class="pull-right">
+    <%= link_to "Create Play Sort", new_back_category_path, class: "btn btn-primary" %>
+  </div>
+
+  <h1>
+    <% if @category %>
+        Under <%= @category.name %>, We have <%= @categories.total_entries %> categories.
+    <% else %>
+        There are <%= @categories.total_entries %> categories.
+    <% end -%>
+  </h1>
+</div>
+
+<div>
+  <table class="table table-striped">
+
+      <th>Categories Name</th>
+      <th></th>
+    </tr>
+    <% @categories.each do |c| %>
+        <tr>
+          <td><%= c.name %></td>
+          <td align="right">
+            <%= link_to "Edit", edit_back_category_path(c) %>
+            <%= link_to "Delete", back_category_path(c), method: :delete, 'data-confirm': "Are you sure? (If you are removing Top-level category, it's children categories will also be deleted)" %>
+            <% if c.root? %>
+                <%= link_to "Children Category", back_categories_path(id: c) %>
+            <% end -%>
+          </td>
+        </tr>
+    <% end -%>
+  </table>
+
+  <%= will_paginate @categories %>
+</div>

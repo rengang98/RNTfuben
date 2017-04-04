@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-lg-3">
+    <%= render 'home/pub/categories' %>
+  </div>
+  <div class="col-lg-9">
+    <ol class="breadcrumb">
+      <li><a href="<%= root_path %>">Home</a></li>
+      <li class="active"><%= @category.parent.name %></li>
+      <li class="active"><%= @category.name %></li>
+    </ol>
+    <h1><%= @category.name %></h1>
+
+    <%= render 'home/pub/tplays' %>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div>
+  <div class="pull-right">
+    <%= link_to "Create classes/activities/plays/tickets/CDs", new_back_tplay_path, class: "btn btn-primary" %>
+  </div>
+
+  <h1>
+
+    classes/activities/plays/tickets/CDs <%= @tplay.total_entries %>
+
+  </h1>
+</div>
+
+<div>
+  <table class="table table-striped">
+
+    <th>Name</th>
+    <th>ID</th>
+    <th>Original price</th>
+    <th>Price</th>
+    <th>Remain</th>
+    <th>Status</th>
+    <th></th>
+    </tr>
+    <% @tplay.each do |c| %>
+        <tr>
+          <td><%= c.name %></td>
+          <td><%= c.tplay_id %></td>
+          <td><%= c.bprice %></td>
+          <td><%= c.price %></td>
+          <td><%= c.ticket %></td>
+          <td><%= c.status %></td>
+          <td align="right">
+            <%= link_to "Edit", edit_back_tplay_path(c) %>
+            <%= link_to "Images", back_tplay_tplay_images_path(tplay_id: c) %>
+            <%= link_to "Delete", back_tplay_path(c), method: :delete, 'data-confirm': "Are you sure? (If you are removing Top-level category, it's children categories will also be deleted)" %>
+          </td>
+        </tr>
+    <% end -%>
+  </table>
+
+  <%= will_paginate @tplay %>
+</div>
